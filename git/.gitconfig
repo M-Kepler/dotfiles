@@ -1,0 +1,12 @@
+[user]
+	name = huangjinjie
+	email = 870131615@qq.com
+[alias]
+	last = log -1 HEAD
+	graph = log --graph --all --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr) %C(bold blue)%an%Creset %C(yellow)%d%Creset'
+[core]
+	quotepath = false
+	ignorecase = false
+[i18n]
+	commitencoding = utf-8
+	logoutputencoding = utf-8
