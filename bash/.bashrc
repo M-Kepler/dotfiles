@@ -121,57 +121,55 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-
-# ------------my own alias---------------
-alias cpv='rsync -ah --info=progress2'
-alias tcn='mv --force -t ~/.local/share/Trash'
-
-# some more ls aliases
+# some more aliases
 alias ll='ls -l'
 alias la='ls -A'
-# alias python='ipython3'
+alias python='ipython3'
 alias ..='cd ..'
 alias fy2zh='trans :zh'
 alias fy2en='trans :en'
-
 
 POWERLINE_SCRIPT=/usr/share/powerline/bindings/bash/powerline.sh
 if [ -f $POWERLINE_SCRIPT ]; then
     source $POWERLINE_SCRIPT
 fi
 
-# VIM 模式配置
+##### vi 模式配置 #####
 set -o vi
 bind -m vi-insert '\c-l':clear-screen
 
 # 设置命令的执行日期
 export HISTTIMEFORMAT='%F %T '
 
-export PYTHONPATH=$PYTHONPATH:/usr/local/python3.8/site-packages:/mnt/Users/M-Kepler/AppData/Local/Programs/Python/Python39/Lib/site-packages
-export PATH=$PATH:/usr/local/bin
-
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
-export LUA_PATH="$LUA_PATH;/usr/lualib/luaunit/?.lua;~/lua/src/luaunit/?.lua;/usr/local/lib/lua/?.lua;;"
-
-# config go path
+##### golang config #####
 # export GOPATH=/usr/lib/go_path:/mnt/e/GoPath
 export GOPATH=/mnt/e/GoPath
-export GOROOT=/usr/lib/go-1.18
+export GOROOT=/usr/lib/go-1.19
 export GOBIN=$GOROOT/bin/
 export GOTOOLS=$GOROOT/pkg/tool/
 export PATH=$PATH:$GOBIN:$GOTOOLS
-
-# go proxy
-export GOPROXY=https://mirrors.aliyun.com/goproxy/
+export GOPROXY=https://goproxy.cn,direct
 export GO111MODULE=on
 
-# kafka
+##### kafka config #####
 export PATH=$PATH:/opt/kafka_2.13-3.2.0/bin
 
-# docker
+##### docker config #####
 export DOCKER_BUILDKIT=1
 
 docker-ip() {
     docker inspect --format '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "$@"
 }
 source <(kubectl completion bash )
+
+##### python config #####
+# export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3.8/dist-packages
+
+##### cpp config #####
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+
+##### lua config #####
+export LUA_PATH="$LUA_PATH;/usr/lualib/luaunit/?.lua;~/lua/src/luaunit/?.lua;/usr/local/lib/lua/?.lua;;"
+
+##### common config #####
+export PATH=$PATH:/usr/local/bin
